@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skin Cancer Detection Result</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <header class="bg-gray-800 text-white p-4">
+      <nav class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Skin Cancer Detection</h1>
+        <ul class="flex space-x-4">
+          <li><a href="/" class="hover:underline">Home</a></li>
+          <li><a href="#about" class="hover:underline">About</a></li>
+          <li><a href="#tips" class="hover:underline">Tips</a></li>
+          <li><a href="#faq" class="hover:underline">FAQ</a></li>
+          <li><a href="#contact" class="hover:underline">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container mx-auto p-4">
+      <h2 class="text-3xl font-bold my-4">Skin Cancer Detection Result</h2>
+
+      {% if prediction %}
+      <div class="my-6">
+        <h3 class="text-2xl font-semibold">Your Prediction Result</h3>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          {% if prediction == 'mel' %}
+          <h3 class="text-xl font-bold">Melanoma (mel)</h3>
+          <img
+            src='/static/OIP (39).jpeg'
+            alt="Melanoma Example"
+            width = "100%"
+            height = "200"
+            class="rounded my-2"
+          />
+          <p>
+            Melanoma is the most dangerous type of skin cancer that develops
+            from melanocytes, the pigment-producing cells of the skin. It can
+            spread rapidly to other parts of the body if not detected early. It
+            usually appears as a new spot on the skin or an existing mole that
+            changes in color, size, or shape. Early detection is crucial for
+            successful treatment.
+            <a
+              href="https://www.cancer.org/cancer/melanoma-skin-cancer.html"
+              class="text-blue-600 hover:underline"
+              target="_blank"
+
+              >Learn more from the American Cancer Society</a
+            >.
+          </p>
+          <p>
+            <strong>Symptoms:</strong> A change in an existing mole, the
+            development of a new, unusual growth, or a sore that doesn’t heal.
+          </p>
+          {% elif prediction == 'bkl' %}
+          <h3 class="text-xl font-bold">Benign Keratosis-like Lesions (bkl)</h3>
+          <img src="/static/OIP (40).jpeg"  width = "100%" height="200px" alt="Benign Keratosis-like Lesions Example" class="rounded my-2">
+          <p>Benign Keratosis-like Lesions are non-cancerous growths that resemble actinic keratoses but do not develop into cancer. They often appear as waxy, raised lesions that may look like they are "stuck on" the skin. <a href="https://www.skincancer.org/skin-cancer-information/actinic-keratosis/" class="text-blue-600 hover:underline" target="_blank">Learn more from the Skin Cancer Foundation</a>.</p>
+          <p><strong>Symptoms:</strong> Waxy, raised lesions, often with a "stuck-on" appearance.</p>
+          {% elif prediction == 'nv' %}
+          <h3 class="text-xl font-bold">Nevus (nv)</h3>
+          <img
+            src="/static/moles.jpg"
+            alt="Nevus Example"
+            width = "100%"
+            height = "200"
+            class="rounded my-2"
+          />
+          <p>
+            Nevus, also known as moles, are benign growths on the skin that
+            arise from melanocytes. They are typically harmless but should be
+            monitored for any changes that might indicate melanoma.
+            <a
+              href="https://www.aad.org/public/diseases/a-z/moles"
+              class="text-blue-600 hover:underline"
+              target="_blank"
+              >Learn more from the American Academy of Dermatology</a
+            >.
+          </p>
+          <p>
+            <strong>Symptoms:</strong> Regular moles are usually uniform in
+            color and have a round or oval shape.
+          </p>
+          {% elif prediction == 'df, vasc, akiec, bcc' %}
+          <h3 class="text-xl font-bold">
+            Combined Category: df, vasc, akiec, bcc
+          </h3>
+          <img
+            src="/static/BCC+illustration+vector.jpg"
+            alt="Skin Cancer Example"
+            width = "100%"
+            height = "200"
+            class="rounded my-2"
+          />
+          <p>
+            This category includes a combination of Dermatofibroma (df),
+            Vascular Lesions (vasc), Actinic Keratosis (akiec), and Basal Cell
+            Carcinoma (bcc). Each type has its unique characteristics and
+            implications.
+          </p>
+          <p>
+            <strong>Dermatofibroma (df):</strong> Dermatofibroma is a common
+            benign skin nodule that is usually firm and has a brownish color. It
+            is often found on the legs and can sometimes itch or be tender when
+            touched.
+            <a
+              href="https://www.healthline.com/health/dermatofibroma"
+              class="text-blue-600 hover:underline"
+              target="_blank"
+              >Learn more from Healthline</a
+            >.
+          </p>
+          <p>
+            <strong>Vascular Lesions (vasc):</strong> Vascular lesions are
+            abnormalities of the blood vessels that appear on the skin. They can
+            be red or purple and can vary in size and shape. While they are
+            usually benign, they can sometimes cause cosmetic concerns or
+            discomfort.
+            <a
+              href="https://www.webmd.com/skin-problems-and-treatments/guide/vascular-lesions"
+              class="text-blue-600 hover:underline"
+              target="_blank"
+              >Learn more from WebMD</a
+            >.
+          </p>
+          <p>
+            <strong>Actinic Keratosis (akiec):</strong> Actinic Keratosis is a
+            precancerous growth that appears as a rough, scaly patch on
+            sun-exposed areas. If left untreated, it can develop into squamous
+            cell carcinoma.
+            <a
+              href="https://www.mayoclinic.org/diseases-conditions/actinic-keratosis/symptoms-causes/syc-20354969"
+              class="text-blue-600 hover:underline"
+              target="_blank"
+              >Learn more from the Mayo Clinic</a
+            >.
+          </p>
+          <p>
+            <strong>Basal Cell Carcinoma (bcc):</strong> Basal Cell Carcinoma is
+            the most common type of skin cancer. It typically appears as a
+            pearly or waxy bump, often with visible blood vessels. Although it
+            rarely spreads to other parts of the body, it can cause significant
+            damage to surrounding tissues if not treated.
+            <a
+              href="https://www.skincancer.org/skin-cancer-information/basal-cell-carcinoma/"
+              class="text-blue-600 hover:underline"
+              target="_blank"
+              >Learn more from the Skin Cancer Foundation</a
+            >.
+          </p>
+          <p>
+            Each of these conditions requires careful monitoring and management
+            to prevent complications. Regular skin checks and consultations with
+            a dermatologist are essential for maintaining skin health and
+            catching any potential issues early.
+          </p>
+          {% else %}
+          <p>Unknown prediction result.</p>
+          {% endif %}
+        </div>
+      </div>
+      {% else %}
+      <p>No prediction result available.</p>
+      {% endif %}
+
+      <div id="tips" class="my-6">
+        <h3 class="text-2xl font-semibold">
+          Tips to Protect Against Skin Cancer
+        </h3>
+        <p class="mt-2">
+          Protecting your skin from harmful UV rays is crucial in preventing
+          skin cancer. Here are some tips:
+        </p>
+        <ul class="list-disc list-inside mt-2">
+          <li>Wear sunscreen with a high SPF.</li>
+          <li>Avoid sun exposure during peak hours (10 AM - 4 PM).</li>
+          <li>Wear protective clothing, hats, and sunglasses.</li>
+          <li>Avoid tanning beds.</li>
+          <li>
+            Regularly check your skin for any changes and consult a
+            dermatologist if you notice anything unusual.
+          </li>
+        </ul>
+      </div>
+
+      <div id="faq" class="my-6">
+        <h3 class="text-2xl font-semibold">Frequently Asked Questions (FAQ)</h3>
+        <div class="mt-2">
+          <h4 class="font-bold">What are the warning signs of skin cancer?</h4>
+          <p>
+            Look for new growths, spots, bumps, patches, or sores that don't
+            heal. Changes in the appearance of a mole or a sore that doesn’t
+            heal are also warning signs.
+          </p>
+          <h4 class="font-bold">How is skin cancer diagnosed?</h4>
+          <p>
+            A dermatologist will examine your skin and may take a biopsy of any
+            suspicious areas for laboratory analysis.
+          </p>
+          <h4 class="font-bold">Is skin cancer treatable?</h4>
+          <p>
+            Yes, skin cancer is highly treatable when detected early. Treatments
+            may include surgical removal, radiation therapy, and topical
+            medications.
+          </p>
+        </div>
+      </div>
+
+      <footer class="bg-gray-800 text-white p-4 mt-6">
+        <div class="container mx-auto text-center">
+          <p>&copy; 2024 Skin Cancer Detection. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

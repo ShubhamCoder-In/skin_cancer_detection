@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold">Skin Cancer Detection</a>
+            <div>
+                <a href="#home" class="mx-2 hover:text-gray-400">Home</a>
+                <a href="#features" class="mx-2 hover:text-gray-400">Features</a>
+                <a href="#data" class="mx-2 hover:text-gray-400">Data Collection</a>
+                <a href="#reviews" class="mx-2 hover:text-gray-400">Reviews</a>
+                <a href="#contact" class="mx-2 hover:text-gray-400">Contact</a>
+                <a href="#prediction" class="mx-2 hover:text-gray-400">Get Prediction</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cover Image -->
+    <div id="home" class="bg-cover bg-center text-white py-20 px-4" style="background-image: url('/static/OIP\ \(13\).jpeg')">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-4">Detect Skin Cancer Early</h1>
+            <p class="text-lg mb-8">Using Advanced Machine Learning Techniques</p>
+        </div>
+    </div>
+
+    <!-- Prediction Form Section -->
+    <div id="prediction" class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Get Your Prediction</h2>
+        <div class="flex justify-center items-center mb-8">
+            <img src="/static/download (12).jpeg" alt="Prediction Image" class="rounded-lg shadow-lg">
+            <form class="max-w-lg ml-8" enctype="multipart/form-data" action="{{url_for('predict')}}" method="POST">
+                <input type="file" name="image" id="image" class="block w-full px-4 py-2 rounded-lg shadow-sm mb-4" placeholder="Upload Image" required>
+                <select id="dx_type" name="dx_type" class="block w-full px-4 py-2 rounded-lg shadow-sm mb-4" required>
+                    <option value="">Diagnosis Type</option>
+                    <option value="3">histo</option>
+                    <option value="0">consensus</option>
+                    <option value="2">confocal</option>
+                    <option value="1">follow_up</option>
+                </select>
+                <input type="number" id="age" name="age" class="block w-full px-4 py-2 rounded-lg shadow-sm mb-4" placeholder="Age" required>
+                <select id="sex" name="gender" class="block w-full px-4 py-2 rounded-lg shadow-sm mb-4" required>
+                    <option value="">Sex</option>
+                    <option value="1">Female</option>
+                    <option value="0">Male</option>
+                    <option value="2">Unknown</option>
+                </select>
+                <select id="localization" name="localization" class="block w-full px-4 py-2 rounded-lg shadow-sm mb-4" required>
+                    <option value="">Localization</option>
+                    <option value="0">abdomen</option>
+                    <option value="1">acral</option>
+                    <option value="2">back</option>
+                    <option value="3">chest</option>
+                    <option value="4">ear</option>
+                    <option value="5">face</option>
+                    <option value="6">foot</option>
+                    <option value="7">genital</option>
+                    <option value="8">hand</option>
+                    <option value="9">lower extremity</option>
+                    <option value="10">neck</option>
+                    <option value="11">scalp</option>
+                    <option value="12">trunk</option>
+                    <option value="13">unknown</option>
+                    <option value="14">upper extremity</option>
+                </select>
+                <button type="submit" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Get Prediction</button>
+            </form>
+        </div>
+        <p class="text-lg text-center text-gray-700">Upload an image of your skin lesion to get a prediction from our machine learning model.</p>
+    </div>
+
+    <!-- Feature Section -->
+    <div id="features" class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <img src="/static/th.jpeg" alt="Feature 1" class="mb-4 rounded-lg">
+                <h3 class="text-xl font-bold mb-4">High Accuracy</h3>
+                <p class="text-gray-700">Our model provides high accuracy in detecting skin cancer from images.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <img src="/static/OIP (33).jpeg" alt="Feature 2" class="mb-4 rounded-lg">
+                <h3 class="text-xl font-bold mb-4">Fast Results</h3>
+                <p class="text-gray-700">Get your results within seconds after uploading the image.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <img src="/static/OIP (13).jpeg" alt="Feature 3" class="mb-4 rounded-lg">
+                <h3 class="text-xl font-bold mb-4">User Friendly</h3>
+                <p class="text-gray-700">Our website is easy to use with a simple and intuitive interface.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Collection Section -->
+    <div id="data" class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Data Collection</h2>
+        <p class="text-lg text-center text-gray-700 mb-8">We use a comprehensive dataset of skin images sourced from medical institutions worldwide. The dataset contains over 25,000 images with detailed annotations, ensuring a diverse and reliable training set for our model.</p>
+        <p class="text-lg text-center text-gray-700 mb-8">The data includes various types of skin lesions such as melanoma, benign nevi, and seborrheic keratosis. The images are pre-processed to standardize the input for our machine learning model, ensuring high accuracy and fast processing times.</p>
+    </div>
+
+    <!-- Reviews Section -->
+    <div id="reviews" class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Reviews</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <blockquote class="text-gray-700">
+                    <p class="italic">This tool has significantly helped in early detection of skin cancer. Highly recommended!</p>
+                    <footer class="text-gray-600">Dr. John Doe</footer>
+                </blockquote>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <blockquote class="text-gray-700">
+                    <p class="italic">An excellent tool with accurate results. The interface is very user-friendly.</p>
+                    <footer class="text-gray-600">Jane Smith</footer>
+                </blockquote>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <blockquote class="text-gray-700">
+                    <p class="italic">A game-changer in the field of dermatology. Fast and reliable.</p>
+                    <footer class="text-gray-600">Dr. Sarah Lee</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Leave a Comment</h2>
+        <form class="max-w-lg mx-auto">
+            <input type="text" id="name" class="block w-full px-4 py-2 rounded-lg shadow-sm mb-4" placeholder="Your Name">
+            <input type="email" id="email" class="block w-full px-4 py-2 rounded-lg shadow-sm mb-4" placeholder="Your Email">
+            <textarea id="message" class="block w-full px-4 py-2 rounded-lg shadow-sm mb-4" placeholder="Your Comment"></textarea>
+            <button type="submit" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Submit</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Skin Cancer Detection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            gsap.from(".cover h1", { duration: 2, y: -50, opacity: 0, ease: "bounce" });
+            gsap.from(".cover p", { duration: 2, y: 50, opacity: 0, delay: 1 });
+        });
+    </script>
+</body>
+</html>
