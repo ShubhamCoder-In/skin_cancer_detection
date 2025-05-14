@@ -1,5 +1,5 @@
 ﻿# Skin Cancer Detection
-[data source]("https://www.kaggle.com/datasets/farjanakabirsamanta/skin-cancer-dataset")
+[data source](https://www.kaggle.com/datasets/farjanakabirsamanta/skin-cancer-dataset)
 ## Project Overview
 This project aims to develop a Convolutional Neural Network (CNN) model to detect skin cancer from images. The project utilizes a dataset of dermatoscopic images to train and validate the model, enhancing the early detection and diagnosis of skin cancer.
 
